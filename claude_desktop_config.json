@@ -4,9 +4,9 @@
         "command": "uv",
         "args": [
           "--directory",
-          "path/to/goldilocks-mcp",
+          "absolute/path/to/goldilocks-mcp/goldilocks_mcp/",
           "run",
-          "goldilocks_mcp/server.py"
+          "server.py"
         ]
       }
     }

@@ -94,21 +94,21 @@ def predict_kspacing(structure, model_name, confidence_level=0.95):
     lattice = lattice_features(df)
     
     # calculating metallicity features
-    checkpoint_metal = torch.load('./goldilocks_mcp/trained_models/CGCNN/is_metal.ckpt', map_location='cpu',weights_only=True)
+    checkpoint_metal = torch.load('./trained_models/CGCNN/is_metal.ckpt', map_location='cpu',weights_only=True)
     metal_model = CGCNN_PyG(**checkpoint_metal['hyper_parameters']['model'])
     metal_model_weights = checkpoint_metal["state_dict"]
     for key in list(metal_model_weights):
         metal_model_weights[key.replace("model.", "")] = metal_model_weights.pop(key)
     metal_model.load_state_dict(metal_model_weights)
     metal_model.eval()
-    metal_atomic_features = {'atom_feature_strategy': {'atom_feature_file': './goldilocks_mcp/embeddings/atom_init_original.json', 'soap_atomic': False}}
+    metal_atomic_features = {'atom_feature_strategy': {'atom_feature_file': './embeddings/atom_init_original.json', 'soap_atomic': False}}
     metal_atom_features = atom_features_from_structure(structure, metal_atomic_features)
     data = build_radius_cgcnn_graph_from_structure(structure, metal_atom_features)
     metal_features=metal_model.extract_crystal_repr(data)
     metal_features_np=metal_features.detach().numpy()
 
     if model_name=='ALIGNN':
-        atomic_features = {'atom_feature_strategy': {'atom_feature_file': './goldilocks_mcp/embeddings/atom_init_with_sssp_cutoffs.json', 'soap_atomic': False}}
+        atomic_features = {'atom_feature_strategy': {'atom_feature_file': './embeddings/atom_init_with_sssp_cutoffs.json', 'soap_atomic': False}}
         atom_features = atom_features_from_structure(structure, atomic_features)
         data_g, data_lg = build_alignn_graph_with_angles_from_structure(structure, atom_features)
         additional_features_df=pd.DataFrame(np.concatenate([composition_features,structure_features,lattice,metal_features_np],axis=1))
