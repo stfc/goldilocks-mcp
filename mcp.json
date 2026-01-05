@@ -1,0 +1,11 @@
+{
+    "name": "goldilocks",
+    "description": "Goldilocks k-point generator with uncertainty estimates",
+    "version": "0.1.0",
+    "command": ["python", "-m", "goldilocks_mcp.server"],
+    "tools": [
+      "estimate_kpoint_distance",
+      "generate_kpoint_grid"
+    ]
+  }
+  

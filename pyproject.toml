@@ -1,0 +1,27 @@
+[project]
+name = "goldilocks-mcp"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "ase==3.26.0",
+    "beautifulsoup4==4.14.3",
+    "bs4==0.0.2",
+    "dscribe>=2.1.2",
+    "huggingface-hub==1.2.1",
+    "jarvis-tools==2024.10.30",
+    "joblib==1.5.2",
+    "llvmlite>=0.41",
+    "matminer==0.9.3",
+    "mcp[cli]>=1.25.0",
+    "monty==2025.3.3",
+    "mp-api==0.45.5",
+    "numba>=0.58",
+    "pydantic==2.11.4",
+    "pymatgen>=2025.10.7",
+    "requests==2.32.5",
+    "scipy==1.16.3",
+    "sklearn-quantile==0.1.1",
+    "torch==2.8.0",
+]

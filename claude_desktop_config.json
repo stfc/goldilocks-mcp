@@ -1,0 +1,13 @@
+{
+    "mcpServers": {
+      "goldilocks-mcp": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "path/to/goldilocks-mcp",
+          "run",
+          "goldilocks_mcp/server.py"
+        ]
+      }
+    }
+}  
