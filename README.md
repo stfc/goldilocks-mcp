@@ -33,7 +33,7 @@ cd goldilocks-mcp
 ```
 uv venv --python 3.11
 source .venv/bin/activate
-uv add -e .
+uv pip install -e .
 ```
 4. Install pytorch-geometric (can't be installed from pyproject.toml but is required). See details https://pytorch-geometric.readthedocs.io/en/latest/install/installation.html
 ```
